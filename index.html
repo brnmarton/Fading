@@ -1,0 +1,58 @@
+<html>
+<head>
+<title>Fading em jQuery</title>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$(document).ready(function(){
+   $("#ocultartoda").click(function(e){
+      $("#minhalista").fadeOut();
+   });
+   $("#mostrartoda").click(function(e){
+      $("#minhalista").fadeIn();
+   });
+   $("#ocultarmostrar").click(function(e){
+      $("#minhalista").fadeOut(function(){
+         $(this).fadeIn();
+      });
+   });
+   $("#selopacidade").change(function(e){
+      var opacidade_desejada = e.target.options[e.target.selectedIndex].value
+      $("h1").fadeTo(1000,opacidade_desejada);
+   });
+   $("#porordem").click(function(e){
+      var opacidade_desejada = $("#selopacidade").attr("value");
+      $("#e1").fadeTo(500, opacidade_desejada, function(){
+         $("#e2").fadeTo(500, opacidade_desejada, function(){
+            $("#e3").fadeTo(500, opacidade_desejada);
+         });
+      });
+   })
+})
+</script>
+</head>
+<body>
+   <h1>Fading em jQuery</h1>
+   <b>Mostrar e ocultar elementos de forma suavizada com fading</b>
+   <p>
+      <a href="#" id="ocultartoda">ocultar toda a lista</a> | 
+      <a href="#" id="mostrartoda">Mostrar toda a lista</a> |
+      <a href="#" id="ocultarmostrar">Ocultar a lista e depois mostra-la</a> 
+   </p>
+   <form name="f1">
+      Muda a opacidade do elemento H1 a: <select name="opacidade" id="selopacidade">
+         <option value="0.2">20%</option>
+         <option value="0.5">50%</option>
+         <option value="0.8">80%</option>
+         <option value="1">100%</option>
+      </select>
+      <br>
+      <a href="#" id="porordem">Mudar a opacidade dos elementos da lista por ordem</a> 
+   </form>
+   
+   <ul id="minhalista">
+      <li id="e1">Elemento 1</li>
+      <li id="e2">Segundo elemento</li>
+      <li id="e3">Terceiro LI</li>
+   </ul>   
+</body>
+</html>
