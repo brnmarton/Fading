@@ -16,18 +16,18 @@ $(document).ready(function(){
       });
    });
    $("#selopacidade").change(function(e){
-      var opacidade_desejada = e.target.options[e.target.selectedIndex].value
+      var opacidade_desejada = $(this).val();
       $("h1").fadeTo(1000,opacidade_desejada);
    });
    $("#porordem").click(function(e){
-      var opacidade_desejada = $("#selopacidade").attr("value");
+      var opacidade_desejada = $("#selopacidade").val();
       $("#e1").fadeTo(500, opacidade_desejada, function(){
          $("#e2").fadeTo(500, opacidade_desejada, function(){
             $("#e3").fadeTo(500, opacidade_desejada);
          });
       });
-   })
-})
+   });
+});
 </script>
 </head>
 <body>
